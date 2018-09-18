@@ -48,12 +48,9 @@ class BST:
 			return n
 		findLeftMostBranch(n.left)
 
+	def getRoot(self):
+		return self.root
+
 	
 
 
-my_list = BST();
-my_list.put(9,"Conor") 
-my_list.put(12,"Kate") 
-my_list.put(10,"James") 
-my_list.put(7,"Fearghal") 
-my_list.printInOrder()
