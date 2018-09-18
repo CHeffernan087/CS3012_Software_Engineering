@@ -16,7 +16,3 @@ class Node:
 		
 
 
-node = Node("Conor",1)
-#node.printNode()
-
-

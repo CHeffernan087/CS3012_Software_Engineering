@@ -1,4 +1,4 @@
-from graph_lowestCommonAncestor import Node
+from Node import Node
 class BST:
 	root = None
 	
