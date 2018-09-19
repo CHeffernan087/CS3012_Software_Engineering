@@ -16,6 +16,7 @@ class TestStringMethods(unittest.TestCase):
     	tree.put(5,"Ashbourne")
     	tree.put(18,"cyprus")
     	tree.put(9,"NEW YORK CITY BABY")
+    	tree.getPathToNode(9)
         self.assertEqual(tree.get(9).getValue(),"NEW YORK CITY BABY")
 
 

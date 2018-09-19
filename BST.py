@@ -66,6 +66,24 @@ class BST:
 		else:
 			return n
 
+	def getPathToNode(self, key):
+		array = []
+		self.recursiveGetPath(self.root,key,array)
+		for n in array:
+			n.printNode()
+
+	def recursiveGetPath(self, n, key, array):
+		if(n==None):
+			return 
+		array.insert(0,n)
+		if(key <n.key):
+			return self.recursiveGetPath(n.left,key,array)
+		elif(key > n.key):
+			return self.recursiveGetPath(n.right,key,array)	
+		else:
+			return n
+
+
 
 
 	
