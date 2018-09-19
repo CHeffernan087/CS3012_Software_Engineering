@@ -1,4 +1,3 @@
-
 class Node:
 	left = None
 	right = None
@@ -14,6 +13,6 @@ class Node:
 
 	def toString(self):
 		return str(self.key)+" : "+self.value
+		
 
-	def getValue(self):
-		return self.value
+

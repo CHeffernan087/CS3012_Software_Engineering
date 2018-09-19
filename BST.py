@@ -51,6 +51,23 @@ class BST:
 	def getRoot(self):
 		return self.root
 
+
+	def get(self, key):
+		return self.get_recursive(self.root,key)
+
+	def get_recursive(self, n,key):
+		if(n==None):
+			return 
+
+		if(key <n.key):
+			return self.get_recursive(n.left,key)
+		elif(key > n.key):
+			return self.get_recursive(n.right,key)	
+		else:
+			return n
+
+
+
 	
 
 
