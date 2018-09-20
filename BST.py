@@ -98,6 +98,32 @@ class BST:
 			for n in pathList:
 				n.printNode()
 
+	def getLowestCommonAncestor(self,array):
+		allPaths = self.getPathsOfNVertices(array)
+		previousNode = None
+		n = allPaths[0][0]
+		i=0
+		print(allPaths)
+		self.printVertexPath(allPaths)
+		
+		while i<len(allPaths[0]):
+
+			for pathList in allPaths:
+				print("checking node..")
+				print(pathList[i].printNode())
+				if(pathList[i]!= n):
+					return previousNode
+			previousNode = n
+			i = i+1
+			n = allPaths[0][i]
+			
+		return n;
+
+
+			
+
+
+
 
 
 

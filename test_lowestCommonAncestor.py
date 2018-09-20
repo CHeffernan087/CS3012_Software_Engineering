@@ -12,22 +12,17 @@ class TestStringMethods(unittest.TestCase):
 
     def testGet(self):
     	tree = BST()
-    	tree.put(50,"Newry")
-    	tree.put(80,"Azerbijan")
-    	tree.put(120,"Navan")
-    	tree.put(110,"Napoli")
-    	tree.put(11,"Japan")
-    	tree.put(5,"Ashbourne")
-    	tree.put(18,"cyprus")
-    	tree.put(9,"NEW YORK CITY BABY")
-    	tree.put(70,"LA Police Department")
-    	tree.put(105,"Bermuda")
-    	tree.put(79,"bali")
-    	tree.put(78,"Atlantis")
-    	tree.put(75,"Paris")
-    	tree.getPathToNode(75)
-    	tree.printVertexPath(tree.getPathsOfNVertices([9]))
-        self.assertEqual(tree.get(9).getValue(),"NEW YORK CITY BABY")
+    	keys = [100,50,200,25,75,150,250,10,36,63,8,125,175,225,290,20,27,47,55,70,77,90,110,137,163,190,213,230,270,300]
+        values = ["Newry","Azerbijan","Navan","Napoli","Japan","Ashbourne","Cyprus","New York City Baby","L.A.P.D","Bermud","Bali","Atlantis","Paris","Memphis","Florida","Summerhill","Castlebar",
+        "London","Kent","Gloucester","Verona","Raheny","Vienna","Washington","Zanzibar","Crete","Panama","Miltown","Leopardstown","Cape town","Alkatraz","Diagon-alley","Jellystone Park","Rathoath"]
+    	i = 0;
+    	for key in keys:
+    		tree.put(key,values[i])
+    		i = i+1
+    	tree.printVertexPath(tree.getPathsOfNVertices([75]))
+        self.assertEqual(tree.get(150).getValue(),"Ashbourne")
+        self.assertEqual(tree.getLowestCommonAncestor([137,163,213]).getKey(),200)
+
 
 
 
