@@ -69,19 +69,34 @@ class BST:
 	def getPathToNode(self, key):
 		array = []
 		self.recursiveGetPath(self.root,key,array)
-		for n in array:
-			n.printNode()
+		return array
 
 	def recursiveGetPath(self, n, key, array):
 		if(n==None):
 			return 
-		array.insert(0,n)
+		array.append(n)
 		if(key <n.key):
 			return self.recursiveGetPath(n.left,key,array)
 		elif(key > n.key):
 			return self.recursiveGetPath(n.right,key,array)	
 		else:
 			return n
+
+	def getPathsOfNVertices(self,array):
+		allPaths = []
+		for key in array:
+			path = self.getPathToNode(key)
+			if(path==None):
+				return None
+				print("HELPLESS")
+			allPaths.insert(0,path)
+		return allPaths
+
+
+	def printVertexPath(self,array):
+		for pathList in array:
+			for n in pathList:
+				n.printNode()
 
 
 

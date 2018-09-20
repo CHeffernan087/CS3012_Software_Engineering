@@ -12,11 +12,21 @@ class TestStringMethods(unittest.TestCase):
 
     def testGet(self):
     	tree = BST()
+    	tree.put(50,"Newry")
+    	tree.put(80,"Azerbijan")
+    	tree.put(120,"Navan")
+    	tree.put(110,"Napoli")
     	tree.put(11,"Japan")
     	tree.put(5,"Ashbourne")
     	tree.put(18,"cyprus")
     	tree.put(9,"NEW YORK CITY BABY")
-    	tree.getPathToNode(9)
+    	tree.put(70,"LA Police Department")
+    	tree.put(105,"Bermuda")
+    	tree.put(79,"bali")
+    	tree.put(78,"Atlantis")
+    	tree.put(75,"Paris")
+    	tree.getPathToNode(75)
+    	tree.printVertexPath(tree.getPathsOfNVertices([9]))
         self.assertEqual(tree.get(9).getValue(),"NEW YORK CITY BABY")
 
 
