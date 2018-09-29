@@ -1,13 +1,29 @@
 from BST import BST
+from Node import Node
 import unittest
 
 class TestStringMethods(unittest.TestCase):
+
+    def testNodeCreation(self):
+        testNode = Node("Conor",21)
+        self.assertEqual(testNode.getKey(),"Conor")
+        self.assertEqual(testNode.getValue(),21)
+        self.assertEqual(testNode.toString(),"Conor : 21")
+
+
+
 
     def testPutRoot(self):
 
     	tree = BST()
     	tree.put(11,"Ashbourne")
         self.assertEqual(tree.getRoot().getKey(), 11)
+
+
+    def testPut(self):
+
+
+
 
 
     def testGet(self):
@@ -19,10 +35,13 @@ class TestStringMethods(unittest.TestCase):
     	for key in keys:
     		tree.put(key,values[i])
     		i = i+1
-    	tree.printVertexPath(tree.getPathsOfNVertices([75]))
         self.assertEqual(tree.get(150).getValue(),"Ashbourne")
         self.assertEqual(tree.getLowestCommonAncestor([137,163,213]).getKey(),200)
 
+
+
+
+ 
 
 
 

@@ -13,7 +13,7 @@ class Node:
 
 
 	def toString(self):
-		return str(self.key)+" : "+self.value
+		return str(self.key)+" : "+str(self.value)
 
 	def getValue(self):
 		return self.value

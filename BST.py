@@ -88,14 +88,12 @@ class BST:
 			path = self.getPathToNode(key)
 			if(path==None):
 				return None
-				print("HELPLESS")
 			allPaths.insert(0,path)
 		return allPaths
 
 
 	def printVertexPath(self,array):
-		for pathList in array:
-			for n in pathList:
+			for n in array:
 				n.printNode()
 
 	def getLowestCommonAncestor(self,array):
@@ -103,14 +101,10 @@ class BST:
 		previousNode = None
 		n = allPaths[0][0]
 		i=0
-		print(allPaths)
-		self.printVertexPath(allPaths)
 		
 		while i<len(allPaths[0]):
 
 			for pathList in allPaths:
-				print("checking node..")
-				print(pathList[i].printNode())
 				if(pathList[i]!= n):
 					return previousNode
 			previousNode = n
@@ -119,6 +113,13 @@ class BST:
 			
 		return n;
 
+
+
+	def makeBST(self,emptyBST,keys,vals):
+		i = 0;
+    	for key in keys:
+    		emptyBST.put(key,values[i])
+    		i = i+1
 
 			
 
