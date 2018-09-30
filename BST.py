@@ -76,7 +76,15 @@ class BST:
 	def findLeftMostBranch(self,n):
 		if(n.left == None):
 			return n
-		findLeftMostBranch(n.left)
+		return self.findLeftMostBranch(n.left)
+
+	def findMinNode(self):
+		if(self.getRoot()==None):
+			return None
+		else:
+			return self.findLeftMostBranch(self.getRoot())
+
+	
 
 	
 

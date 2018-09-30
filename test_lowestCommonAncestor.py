@@ -10,7 +10,7 @@ class TestStringMethods(unittest.TestCase):
         getRoot => tested
         get => tested
         printInOrder => tested 
-        findLeftMostBranch =>
+        findMin =>
         getPathToNode =>
         getPathToNVertices =>
         printVertexPath =>
@@ -92,13 +92,8 @@ class TestStringMethods(unittest.TestCase):
 
 
     def testGet(self):
-    	tree = BST()
-    	keys = [100,50,200,25,75,150,250,10,36,63,8,125,175,225,290,20,27,47,55,70,77,90,110,137,163,190,213,230,270,300]
-        values = ["Newry","Azerbijan","Navan","Napoli","Japan","Ashbourne","Cyprus","New York City Baby","L.A.P.D","Bermud","Bali","Atlantis","Paris","Memphis","Florida","Summerhill","Castlebar",
-        "London","Kent","Gloucester","Verona","Raheny","Vienna","Washington","Zanzibar","Crete","Panama","Miltown","Leopardstown","Cape town","Alkatraz","Diagon-alley","Jellystone Park","Rathoath"]
     	
-
-
+        tree = BST()
         keys = [10,5,15,2,7,12,20]
         vals = ["a","b","c","d","e","f","g","h","i"]
         tree.makeBST(keys,vals)
@@ -123,7 +118,21 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(tree.printInOrder(),expectedOutPut)
 
 
-    
+    def testFindMinNode(self):
+        tree = BST()
+        self.assertEqual(tree.findMinNode(),None)
+        keys = [10,5,15,2,7,12,20]
+        vals = ["a","b","c","d","e","f","g","h","i"]
+        tree.makeBST(keys,vals)
+        self.assertEqual(tree.findMinNode().getKey(),2)
+
+        tree = BST()
+        keys = [100,50,200,25,75,150,250,10,36,63,8,125,175,225,290,20,27,47,55,70,77,90,110,137,163,190,213,230,270,300]
+        values = ["Newry","Azerbijan","Navan","Napoli","Japan","Ashbourne","Cyprus","New York City Baby","L.A.P.D","Bermud","Bali","Atlantis","Paris","Memphis","Florida","Summerhill","Castlebar",
+        "London","Kent","Gloucester","Verona","Raheny","Vienna","Washington","Zanzibar","Crete","Panama","Miltown","Leopardstown","Cape town","Alkatraz","Diagon-alley","Jellystone Park","Rathoath"]
+        tree.makeBST(keys,values)
+        self.assertEqual(tree.findMinNode().getKey(),8)
+
 
 
 
