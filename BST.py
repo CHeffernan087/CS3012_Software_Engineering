@@ -111,9 +111,7 @@ class BST:
 		allPaths = []
 		for key in array:
 			path = self.getPathToNode(key)
-			if(path==None):
-				return None
-			allPaths.insert(0,path)
+			allPaths.append(path)
 		return allPaths
 
 
@@ -123,6 +121,12 @@ class BST:
 
 	def getLowestCommonAncestor(self,array):
 		allPaths = self.getPathsOfNVertices(array)
+
+		#check all nodes are in tree
+		for path in allPaths:
+			if(path==None):
+				return None
+
 		previousNode = None
 		n = allPaths[0][0]
 		i=0

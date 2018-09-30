@@ -175,5 +175,29 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(pathToNode[3].getKey(),63)
         self.assertEqual(pathToNode[4].getKey(),55)
 
+    def testGetPathOfNVertices(self):
+
+        #test balanced tree
+        keys = [10,5,15,2,7,12,20]
+        vals = ["a","b","c","d","e","f","g","h","i"]
+        tree = BST()
+        tree.makeBST(keys,vals)
+        paths = tree.getPathsOfNVertices([7,15,12,390])
+
+        self.assertEqual(len(paths),4)
+        self.assertEqual(paths[0][0].getKey(),10)
+        self.assertEqual(paths[0][1].getKey(),5)
+        self.assertEqual(paths[0][2].getKey(),7)
+
+        self.assertEqual(paths[1][0].getKey(),10)
+        self.assertEqual(paths[1][1].getKey(),15)
+
+        self.assertEqual(paths[2][0].getKey(),10)
+        self.assertEqual(paths[2][1].getKey(),15)
+        self.assertEqual(paths[2][2].getKey(),12)
+
+        self.assertEqual(paths[3],None)
+
+
 if __name__ == '__main__':
     unittest.main()
