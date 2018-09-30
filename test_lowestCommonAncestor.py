@@ -11,7 +11,7 @@ class TestStringMethods(unittest.TestCase):
         get => tested
         printInOrder => tested 
         findMin => tested 
-        getPathToNode =>
+        getPathToNode => tested 
         getPathToNVertices =>
         printVertexPath =>
         getLowestCommonAncestor => 
