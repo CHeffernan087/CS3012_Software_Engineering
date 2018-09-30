@@ -10,7 +10,7 @@ class TestStringMethods(unittest.TestCase):
         getRoot => tested
         get => tested
         printInOrder => tested 
-        findMin =>
+        findMin => tested 
         getPathToNode =>
         getPathToNVertices =>
         printVertexPath =>
@@ -128,13 +128,52 @@ class TestStringMethods(unittest.TestCase):
 
         tree = BST()
         keys = [100,50,200,25,75,150,250,10,36,63,8,125,175,225,290,20,27,47,55,70,77,90,110,137,163,190,213,230,270,300]
-        values = ["Newry","Azerbijan","Navan","Napoli","Japan","Ashbourne","Cyprus","New York City Baby","L.A.P.D","Bermud","Bali","Atlantis","Paris","Memphis","Florida","Summerhill","Castlebar",
+        values = ["Newry","Azerbijan","Navan","Napoli","Japan","Ashbourne","Cyprus","New York City Baby","L.A.P.D","Bermuda","Bali","Atlantis","Paris","Memphis","Florida","Summerhill","Castlebar",
         "London","Kent","Gloucester","Verona","Raheny","Vienna","Washington","Zanzibar","Crete","Panama","Miltown","Leopardstown","Cape town","Alkatraz","Diagon-alley","Jellystone Park","Rathoath"]
         tree.makeBST(keys,values)
         self.assertEqual(tree.findMinNode().getKey(),8)
 
+   
 
+    def testGetPathToVertex(self):
+        #test linear tree
+        tree = BST();
+        keys = [1,2,3,4,5,6,7,8]
+        vals = ['a','b','c','d','e','f','g','h']
+        tree.makeBST(keys,vals)
+        pathToNode = tree.getPathToNode(5)
+        self.assertEqual(pathToNode[0].getKey(),1)
+        self.assertEqual(pathToNode[1].getKey(),2)
+        self.assertEqual(pathToNode[2].getKey(),3)
+        self.assertEqual(pathToNode[3].getKey(),4)
+        self.assertEqual(pathToNode[4].getKey(),5)
 
+        #test for node not in tree
+        pathToNode = tree.getPathToNode(1000)
+        self.assertEqual(pathToNode,None)
+
+        #test balanced tree
+        keys = [10,5,15,2,7,12,20]
+        vals = ["a","b","c","d","e","f","g","h","i"]
+        tree = BST()
+        tree.makeBST(keys,vals)
+        pathToNode = tree.getPathToNode(7)
+        self.assertEqual(pathToNode[0].getKey(),10)
+        self.assertEqual(pathToNode[1].getKey(),5)
+        self.assertEqual(pathToNode[2].getKey(),7)
+
+        #test large non-balanced BST
+        tree = BST()
+        keys = [100,50,200,25,75,150,250,10,36,63,8,125,175,225,290,20,27,47,55,70,77,90,110,137,163,190,213,230,270,300]
+        values = ["Newry","Azerbijan","Navan","Napoli","Japan","Ashbourne","Cyprus","New York City Baby","L.A.P.D","Bermuda","Bali","Atlantis","Paris","Memphis","Florida","Summerhill","Castlebar",
+        "London","Kent","Gloucester","Verona","Raheny","Vienna","Washington","Zanzibar","Crete","Panama","Miltown","Leopardstown","Cape town","Alkatraz","Diagon-alley","Jellystone Park","Rathoath"]
+        tree.makeBST(keys,values)
+        pathToNode = tree.getPathToNode(55)
+        self.assertEqual(pathToNode[0].getKey(),100)
+        self.assertEqual(pathToNode[1].getKey(),50)
+        self.assertEqual(pathToNode[2].getKey(),75)
+        self.assertEqual(pathToNode[3].getKey(),63)
+        self.assertEqual(pathToNode[4].getKey(),55)
 
 if __name__ == '__main__':
     unittest.main()
