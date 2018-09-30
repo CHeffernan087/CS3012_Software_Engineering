@@ -115,11 +115,13 @@ class BST:
 
 
 
-	def makeBST(self,emptyBST,keys,vals):
-		i = 0;
-    	for key in keys:
-    		emptyBST.put(key,values[i])
-    		i = i+1
+	def makeBST(self,keys,vals):
+		i = 0
+		for key in keys:
+			self.put(key,vals[i])
+			i = i+1
+    	
+    		
 
 			
 

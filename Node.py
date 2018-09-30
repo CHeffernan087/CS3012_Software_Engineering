@@ -17,3 +17,9 @@ class Node:
 
 	def getValue(self):
 		return self.value
+
+	def getLeft(self):
+		return self.left
+
+	def getRight(self):
+		return self.right
