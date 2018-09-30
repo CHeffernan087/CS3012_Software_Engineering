@@ -12,8 +12,8 @@ class TestStringMethods(unittest.TestCase):
         printInOrder => tested 
         findMin => tested 
         getPathToNode => tested 
-        getPathToNVertices =>
-        printVertexPath =>
+        getPathToNVertices => tested
+        printVertexPath => tested
         getLowestCommonAncestor => 
         
     '''
@@ -197,6 +197,19 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(paths[2][2].getKey(),12)
 
         self.assertEqual(paths[3],None)
+
+    def testLowestCommonAncestor(self):
+        tree = BST()
+        keys = [100,50,200,25,75,150,250,10,36,63,8,125,175,225,290,20,27,47,55,70,77,90,110,137,163,190,213,230,270,300]
+        values = ["Newry","Azerbijan","Navan","Napoli","Japan","Ashbourne","Cyprus","New York City Baby","L.A.P.D","Bermuda","Bali","Atlantis","Paris","Memphis","Florida","Summerhill","Castlebar",
+        "London","Kent","Gloucester","Verona","Raheny","Vienna","Washington","Zanzibar","Crete","Panama","Miltown","Leopardstown","Cape town","Alkatraz","Diagon-alley","Jellystone Park","Rathoath"]
+        tree.makeBST(keys,values)
+
+        self.assertEqual(tree.getLowestCommonAncestor([8,20,300]).getKey(),100)
+        self.assertEqual(tree.getLowestCommonAncestor([55,70,90]).getKey(),75)
+        self.assertEqual(tree.getLowestCommonAncestor([1,2,3]),None)
+        self.assertEqual(tree.getLowestCommonAncestor([213,190,110]).getKey(),200)
+        self.assertEqual(tree.getLowestCommonAncestor([163,190,110]).getKey(),150)
 
 
 if __name__ == '__main__':
