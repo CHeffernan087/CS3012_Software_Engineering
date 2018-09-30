@@ -3,7 +3,7 @@ class BST:
 	root = None
 	
 
-	
+
 
 	def put_recursive(self,n, key, val):
 
@@ -18,7 +18,8 @@ class BST:
 			else:
 				self.put_recursive(n.right,key,val)
 		else:
-			n.val = val
+			
+			n.setValue(val)
 
 
 	def put(self,key, value):
@@ -52,15 +53,24 @@ class BST:
 
 	def printInOrder(self):
 		if(self.root!=None):
-			self.printInOrderRecursive(self.root)
+			array = []
+			self.printInOrderRecursive(self.root,array)
+			returnString = ""
+			for string in array:
+				returnString+= string
+			return returnString
+		else:
+			return ""
+
 			
-	def printInOrderRecursive(self,n):
+	def printInOrderRecursive(self,n,array):
 
 		if(n==None):
 			return
-		self.printInOrderRecursive(n.left)
+		self.printInOrderRecursive(n.left,array)
 		n.printNode()
-		self.printInOrderRecursive(n.right)
+		array.append(n.toString()+"\n")
+		self.printInOrderRecursive(n.right,array)
 
 
 	def findLeftMostBranch(self,n):

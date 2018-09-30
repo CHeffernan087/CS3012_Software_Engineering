@@ -23,3 +23,6 @@ class Node:
 
 	def getRight(self):
 		return self.right
+
+	def setValue(self,val):
+		self.value = val

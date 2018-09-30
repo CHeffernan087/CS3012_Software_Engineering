@@ -9,7 +9,7 @@ class TestStringMethods(unittest.TestCase):
         put => tested
         getRoot => tested
         get => tested
-        printInOrder =>
+        printInOrder => tested 
         findLeftMostBranch =>
         getPathToNode =>
         getPathToNVertices =>
@@ -52,6 +52,10 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(tree.getRoot().getRight().getRight().getRight().getRight().getValue(), "e")
         self.assertEqual(tree.getRoot().getRight().getRight().getRight().getRight().getRight().getValue(), "f")
         self.assertEqual(tree.getRoot().getRight().getRight().getRight().getRight().getRight().getRight().getValue(), "g")
+
+        tree.put(2,"z")
+        self.assertEqual(tree.getRoot().getRight().getValue(), "z")
+        self.assertEqual(tree.getRoot().getRight().getRight().getValue(), "c")
 
 
     def testPutLeft(self):
@@ -98,7 +102,6 @@ class TestStringMethods(unittest.TestCase):
         keys = [10,5,15,2,7,12,20]
         vals = ["a","b","c","d","e","f","g","h","i"]
         tree.makeBST(keys,vals)
-
         self.assertEqual(tree.get(5).getValue(),"b")
         self.assertEqual(tree.get(15).getValue(),"c")
         self.assertEqual(tree.get(2).getValue(),"d")
@@ -110,19 +113,19 @@ class TestStringMethods(unittest.TestCase):
         #self.assertEqual(tree.getLowestCommonAncestor([137,163,213]).getKey(),200)
 
 
+    def testPrintInOrder(self):
+        keys = [10,5,15,2,7,12,20]
+        vals = ["a","b","c","d","e","f","g","h","i"]
+        tree = BST()
+        self.assertEqual(tree.printInOrder(),"")
+        tree.makeBST(keys,vals)
+        expectedOutPut = "2 : d\n5 : b\n7 : e\n10 : a\n12 : f\n15 : c\n20 : g\n"
+        self.assertEqual(tree.printInOrder(),expectedOutPut)
 
 
- 
+    
 
 
 
 if __name__ == '__main__':
     unittest.main()
-'''
-my_list = BST();
-my_list.put(9,"Conor") 
-my_list.put(12,"Kate") 
-my_list.put(10,"James") 
-my_list.put(7,"Fearghal") 
-my_list.printInOrder()
-'''
