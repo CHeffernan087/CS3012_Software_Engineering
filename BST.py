@@ -3,6 +3,8 @@ class BST:
 	root = None
 	
 
+	
+
 	def put_recursive(self,n, key, val):
 
 		if(n.getKey() > key):
@@ -29,6 +31,24 @@ class BST:
 			self.put_recursive(self.root,key,value)
 
 
+ 	def getRoot(self):
+		return self.root
+
+
+	def get(self, key):
+		return self.get_recursive(self.root,key)
+
+	def get_recursive(self, n,key):
+		if(n==None):
+			return None
+
+		if(key <n.key):
+			return self.get_recursive(n.left,key)
+		elif(key > n.key):
+			return self.get_recursive(n.right,key)	
+		else:
+			return n
+
 
 	def printInOrder(self):
 		if(self.root!=None):
@@ -48,23 +68,7 @@ class BST:
 			return n
 		findLeftMostBranch(n.left)
 
-	def getRoot(self):
-		return self.root
-
-
-	def get(self, key):
-		return self.get_recursive(self.root,key)
-
-	def get_recursive(self, n,key):
-		if(n==None):
-			return 
-
-		if(key <n.key):
-			return self.get_recursive(n.left,key)
-		elif(key > n.key):
-			return self.get_recursive(n.right,key)	
-		else:
-			return n
+	
 
 	def getPathToNode(self, key):
 		array = []

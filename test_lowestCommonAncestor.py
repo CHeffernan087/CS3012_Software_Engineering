@@ -4,6 +4,21 @@ import unittest
 
 class TestStringMethods(unittest.TestCase):
 
+    
+    '''
+        put => tested
+        getRoot => tested
+        get => tested
+        printInOrder =>
+        findLeftMostBranch =>
+        getPathToNode =>
+        getPathToNVertices =>
+        printVertexPath =>
+        getLowestCommonAncestor => 
+        
+    '''
+
+
     def testNodeCreation(self):
         testNode = Node("Conor",21)
         self.assertEqual(testNode.getKey(),"Conor")
@@ -77,12 +92,22 @@ class TestStringMethods(unittest.TestCase):
     	keys = [100,50,200,25,75,150,250,10,36,63,8,125,175,225,290,20,27,47,55,70,77,90,110,137,163,190,213,230,270,300]
         values = ["Newry","Azerbijan","Navan","Napoli","Japan","Ashbourne","Cyprus","New York City Baby","L.A.P.D","Bermud","Bali","Atlantis","Paris","Memphis","Florida","Summerhill","Castlebar",
         "London","Kent","Gloucester","Verona","Raheny","Vienna","Washington","Zanzibar","Crete","Panama","Miltown","Leopardstown","Cape town","Alkatraz","Diagon-alley","Jellystone Park","Rathoath"]
-    	i = 0;
-    	for key in keys:
-    		tree.put(key,values[i])
-    		i = i+1
-        self.assertEqual(tree.get(150).getValue(),"Ashbourne")
-        self.assertEqual(tree.getLowestCommonAncestor([137,163,213]).getKey(),200)
+    	
+
+
+        keys = [10,5,15,2,7,12,20]
+        vals = ["a","b","c","d","e","f","g","h","i"]
+        tree.makeBST(keys,vals)
+
+        self.assertEqual(tree.get(5).getValue(),"b")
+        self.assertEqual(tree.get(15).getValue(),"c")
+        self.assertEqual(tree.get(2).getValue(),"d")
+        self.assertEqual(tree.get(7).getValue(),"e")
+        self.assertEqual(tree.get(12).getValue(),"f")
+        self.assertEqual(tree.get(18),None)
+
+        #self.assertEqual(tree.get(150).getValue(),"Ashbourne")
+        #self.assertEqual(tree.getLowestCommonAncestor([137,163,213]).getKey(),200)
 
 
 
