@@ -20,6 +20,7 @@ class TestStringMethods(unittest.TestCase):
 
 
     def testNodeCreation(self):
+        #check node constructor is working okay
         testNode = Node("Conor",21)
         self.assertEqual(testNode.getKey(),"Conor")
         self.assertEqual(testNode.getValue(),21)
@@ -29,13 +30,14 @@ class TestStringMethods(unittest.TestCase):
 
 
     def testPutRoot(self):
-
+        #check if adding one node to the tree will in fact have the root pointer pointed to it
     	tree = BST()
     	tree.put(11,"Ashbourne")
         self.assertEqual(tree.getRoot().getKey(), 11)
 
 
     def testPutRight(self):
+        #check the put to the right by making a linear tree to the right
         tree = BST()
         tree.put(1,"a")
         tree.put(2,"b")
@@ -44,7 +46,7 @@ class TestStringMethods(unittest.TestCase):
         tree.put(5,"e")
         tree.put(6,"f")
         tree.put(7,"g")
-
+        #check manually if all heys have been put in right place by manully traversinf left pointers
         self.assertEqual(tree.getRoot().getValue(), "a")
         self.assertEqual(tree.getRoot().getRight().getValue(), "b")
         self.assertEqual(tree.getRoot().getRight().getRight().getValue(), "c")
@@ -52,13 +54,14 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(tree.getRoot().getRight().getRight().getRight().getRight().getValue(), "e")
         self.assertEqual(tree.getRoot().getRight().getRight().getRight().getRight().getRight().getValue(), "f")
         self.assertEqual(tree.getRoot().getRight().getRight().getRight().getRight().getRight().getRight().getValue(), "g")
-
+        #check if inserting a key again will update the associated value
         tree.put(2,"z")
         self.assertEqual(tree.getRoot().getRight().getValue(), "z")
         self.assertEqual(tree.getRoot().getRight().getRight().getValue(), "c")
 
 
     def testPutLeft(self):
+        #check the put to the left by making a linear tree to the left
         tree = BST()
         tree.put(7,"a")
         tree.put(6,"b")
@@ -67,7 +70,7 @@ class TestStringMethods(unittest.TestCase):
         tree.put(3,"e")
         tree.put(2,"f")
         tree.put(1,"g")
-
+        #check manually if all heys have been put in right place by manully traversinf left pointers
         self.assertEqual(tree.getRoot().getValue(), "a")
         self.assertEqual(tree.getRoot().getLeft().getValue(), "b")
         self.assertEqual(tree.getRoot().getLeft().getLeft().getValue(), "c")
@@ -80,7 +83,9 @@ class TestStringMethods(unittest.TestCase):
         tree = BST()
         keys = [10,5,15,2,7,12,20]
         vals = ["a","b","c","d","e","f","g","h","i"]
+        #function that calls put continually on  set of keys/vals
         tree.makeBST(keys,vals)
+        #check manually if all heys have been put in right place by manully traversinf left/ right pointers
         self.assertEqual(tree.getRoot().getKey(), 10)
         self.assertEqual(tree.getRoot().getLeft().getKey(), 5)
         self.assertEqual(tree.getRoot().getLeft().getLeft().getKey(), 2)
@@ -97,35 +102,39 @@ class TestStringMethods(unittest.TestCase):
         keys = [10,5,15,2,7,12,20]
         vals = ["a","b","c","d","e","f","g","h","i"]
         tree.makeBST(keys,vals)
+        #get vals for a number of keys we have just placed in the binary tree
         self.assertEqual(tree.get(5).getValue(),"b")
         self.assertEqual(tree.get(15).getValue(),"c")
         self.assertEqual(tree.get(2).getValue(),"d")
         self.assertEqual(tree.get(7).getValue(),"e")
         self.assertEqual(tree.get(12).getValue(),"f")
+        #check if getting a value not in the tree returns none
         self.assertEqual(tree.get(18),None)
 
-        #self.assertEqual(tree.get(150).getValue(),"Ashbourne")
-        #self.assertEqual(tree.getLowestCommonAncestor([137,163,213]).getKey(),200)
 
 
     def testPrintInOrder(self):
         keys = [10,5,15,2,7,12,20]
         vals = ["a","b","c","d","e","f","g","h","i"]
+        #check that printing an empty tree just prints an empty string
         tree = BST()
         self.assertEqual(tree.printInOrder(),"")
+        #check that printing balanced BST returns right result in right order
         tree.makeBST(keys,vals)
         expectedOutPut = "2 : d\n5 : b\n7 : e\n10 : a\n12 : f\n15 : c\n20 : g\n"
         self.assertEqual(tree.printInOrder(),expectedOutPut)
 
 
     def testFindMinNode(self):
+        #check that min node of empty tree is None
         tree = BST()
         self.assertEqual(tree.findMinNode(),None)
+        #check min of small balanced BST
         keys = [10,5,15,2,7,12,20]
         vals = ["a","b","c","d","e","f","g","h","i"]
         tree.makeBST(keys,vals)
         self.assertEqual(tree.findMinNode().getKey(),2)
-
+        #check min node of non-balanced, large BST
         tree = BST()
         keys = [100,50,200,25,75,150,250,10,36,63,8,125,175,225,290,20,27,47,55,70,77,90,110,137,163,190,213,230,270,300]
         values = ["Newry","Azerbijan","Navan","Napoli","Japan","Ashbourne","Cyprus","New York City Baby","L.A.P.D","Bermuda","Bali","Atlantis","Paris","Memphis","Florida","Summerhill","Castlebar",
@@ -183,19 +192,20 @@ class TestStringMethods(unittest.TestCase):
         tree = BST()
         tree.makeBST(keys,vals)
         paths = tree.getPathsOfNVertices([7,15,12,390])
-
+        #check that indeed four paths were returned by function
         self.assertEqual(len(paths),4)
+        #check that first path is a path to 7
         self.assertEqual(paths[0][0].getKey(),10)
         self.assertEqual(paths[0][1].getKey(),5)
         self.assertEqual(paths[0][2].getKey(),7)
-
+        #check that second path is a path to 15
         self.assertEqual(paths[1][0].getKey(),10)
         self.assertEqual(paths[1][1].getKey(),15)
-
+        #check that third path is a path to 12
         self.assertEqual(paths[2][0].getKey(),10)
         self.assertEqual(paths[2][1].getKey(),15)
         self.assertEqual(paths[2][2].getKey(),12)
-
+        #check that fourth path is null as the node wasnt in the tree
         self.assertEqual(paths[3],None)
 
     def testLowestCommonAncestor(self):
@@ -204,10 +214,11 @@ class TestStringMethods(unittest.TestCase):
         values = ["Newry","Azerbijan","Navan","Napoli","Japan","Ashbourne","Cyprus","New York City Baby","L.A.P.D","Bermuda","Bali","Atlantis","Paris","Memphis","Florida","Summerhill","Castlebar",
         "London","Kent","Gloucester","Verona","Raheny","Vienna","Washington","Zanzibar","Crete","Panama","Miltown","Leopardstown","Cape town","Alkatraz","Diagon-alley","Jellystone Park","Rathoath"]
         tree.makeBST(keys,values)
-
+        #check edge case that None is returned when one or more nodes arent in the tree
+        self.assertEqual(tree.getLowestCommonAncestor([1,2,3]),None)
+        #check four instances where all Nodes are in the tree, insure the correct Lowest Common Ancestor is returned 
         self.assertEqual(tree.getLowestCommonAncestor([8,20,300]).getKey(),100)
         self.assertEqual(tree.getLowestCommonAncestor([55,70,90]).getKey(),75)
-        self.assertEqual(tree.getLowestCommonAncestor([1,2,3]),None)
         self.assertEqual(tree.getLowestCommonAncestor([213,190,110]).getKey(),200)
         self.assertEqual(tree.getLowestCommonAncestor([163,190,110]).getKey(),150)
 
