@@ -1,5 +1,6 @@
 from BST import BST
 from Node import Node
+from diGraphNode import diGraphNode
 import unittest
 
 class TestStringMethods(unittest.TestCase):
@@ -221,6 +222,12 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(tree.getLowestCommonAncestor([55,70,90]).getKey(),75)
         self.assertEqual(tree.getLowestCommonAncestor([213,190,110]).getKey(),200)
         self.assertEqual(tree.getLowestCommonAncestor([163,190,110]).getKey(),150)
+
+
+    def testdiGraphNodeCreation(self):
+        node = diGraphNode(4,"Conor")
+        self.assertEqual(node.getVal(),"Conor")
+        self.assertEqual(node.getKey(),4)
 
 
 if __name__ == '__main__':
