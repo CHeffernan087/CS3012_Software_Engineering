@@ -9,6 +9,7 @@ class diGraphNode :
 	def __init__(self,key,value):
 		self.key = key
 		self.value = value
+		self.nodesPointedTo = []
 
 	def pointToNewNode(self,newNode):
 		self.nodesPointedTo.append(newNode)
@@ -31,7 +32,7 @@ class diGraphNode :
 			print node.getKey
 	
 	def existsPathTo(self,key):
-		if(self.getKey==key):
+		if(self.getKey()==key):
 			return True
 		for node in self.nodesPointedTo:
 			if(node.existsPathTo(key)==True):
@@ -41,7 +42,9 @@ class diGraphNode :
 	def hasEdgeTo(self, key):
 		for node in self.nodesPointedTo:
 			if(node.getKey()==key):
-				return True;
+				return True
 		return False
+	
+	
 
 	

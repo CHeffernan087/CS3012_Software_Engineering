@@ -4,7 +4,7 @@ class diGraph:
    
     bag = []
 
-    def __init__(self):
+    def __init__(self, bag = None):
 		self.bag = []
 
     def nodesToString(self):
@@ -30,12 +30,17 @@ class diGraph:
                 return node
         return None
 
-    def addMultipleEdges(self, keys, vals):
+    def addMultipleNodes(self, keys, vals):
         i = 0
         for key in keys:
-            val = vals[i++]
+            val = vals[i]
+            i = i+1
             newNode = diGraphNode(key,val)
-            self.addNodeToBag(node)
+            self.addNodeToBag(newNode)
+
+    def addMultipleEdges(self,edgeSet):
+        for edge in edgeSet:
+            self.addEdgeByKey(edge[0],edge[1])
 
     def getNodeByKey(self,key):
         for node in self.bag:
@@ -48,4 +53,10 @@ class diGraph:
         node2 = self.getNodeByKey(k2)
         if(node1!=None and node2!= None):
             self.addEdge(node1,node2)
+
+    def existsPathFromTo(self,fromKey,toKey):
+        node1 = self.getNodeByKey(fromKey)
+        if(node1==None):
+            return False
+        return node1.existsPathTo(toKey)
     

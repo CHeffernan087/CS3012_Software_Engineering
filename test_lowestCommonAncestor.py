@@ -257,6 +257,19 @@ class TestStringMethods(unittest.TestCase):
         keySet = [1,2,3,4,5,6,7,8,9,10]
         valSet = ["a","b","c","d","e","f","g","h","i","j"]
         tree = diGraph()
+        print("Set Of Nodes In Order  :\n")
+        tree.addMultipleNodes(keySet,valSet)
+        print(tree.nodesToString())
+        edgeSet= [[1,5],[1,6],[1,2],[2,10],[3,2],[3,10],[3,9],[3,4],[3,7],[4,7],[5,3],[5,6],[7,8]]
+        tree.addMultipleEdges(edgeSet)
+        self.assertEqual(tree.existsPathFromTo(1,5),True)
+        self.assertEqual(tree.existsPathFromTo(1,10),True)
+        self.assertEqual(tree.existsPathFromTo(1,9),True)
+        self.assertEqual(tree.existsPathFromTo(1,9),True)
+        self.assertEqual(tree.existsPathFromTo(2,3),False)
+        self.assertEqual(tree.existsPathFromTo(2,11),False)
+        self.assertEqual(tree.existsPathFromTo(11,2),False)
+        self.assertEqual(tree.existsPathFromTo(4,8),True)
 
         
 
