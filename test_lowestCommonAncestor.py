@@ -1,6 +1,7 @@
 from BST import BST
 from Node import Node
 from diGraphNode import diGraphNode
+from diGraph import diGraph
 import unittest
 
 class TestStringMethods(unittest.TestCase):
@@ -228,6 +229,20 @@ class TestStringMethods(unittest.TestCase):
         node = diGraphNode(4,"Conor")
         self.assertEqual(node.getVal(),"Conor")
         self.assertEqual(node.getKey(),4)
+    
+    def testAddNodeToBag(self):
+        tree = diGraph()
+        node = diGraphNode(10,"Conor")
+        tree.addNodeToBag(node)
+        self.assertEqual(tree.nodesToString(),"10 : Conor")
+        node2 = diGraphNode(20,"Ruan")
+        tree.addNodeToBag(node2)
+        self.assertEqual(tree.nodesToString(),"10 : Conor,20 : Ruan")
+        node3 = diGraphNode(30,"Cuan")
+        tree.addNodeToBag(node3)
+        self.assertEqual(tree.nodesToString(),"10 : Conor,20 : Ruan,30 : Cuan")
+        
+
 
 
 if __name__ == '__main__':

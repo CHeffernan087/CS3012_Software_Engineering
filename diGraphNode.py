@@ -22,3 +22,15 @@ class diGraphNode :
 
 	def getVal(self):
 		return self.value
+
+	def printAdjacentNodes(self):
+		for node in nodesPointedTo:
+			print node.getKey
+	
+	def existsPathTo(self,key):
+		if(self.getKey==key):
+			return True
+		for node in nodesPointedTo:
+			if(node.existsPathTo(key)==True):
+				return True
+		return False

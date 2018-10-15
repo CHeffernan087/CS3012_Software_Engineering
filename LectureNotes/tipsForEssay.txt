@@ -1,0 +1,14 @@
+measurable data:
+PSP - generating data (*personal software process)
+1) use data as people often overestimate their own abilities
+2) If we generate our own data, we might manipulate the data to paint ourselves in a better light. Also the same metrics not applicable to every else. e.g a manager shouldnt hit the same sales KPI's as sales people because theyre a manager!
+- Collaborative software development labratory
+- Hackystat (used for producing dev related stats)
+
+computational platforms
+algorithmic approaches
+
+
+Ethics:
+what are the implications of building what we build?
+Should we build it if there are negative implications??
