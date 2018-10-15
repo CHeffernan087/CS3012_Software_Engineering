@@ -241,6 +241,23 @@ class TestStringMethods(unittest.TestCase):
         node3 = diGraphNode(30,"Cuan")
         tree.addNodeToBag(node3)
         self.assertEqual(tree.nodesToString(),"10 : Conor,20 : Ruan,30 : Cuan")
+
+    def testAddEdge(self):
+        testTree = diGraph()
+        node = diGraphNode(10,"Conor")
+        testTree .addNodeToBag(node)
+        node2 = diGraphNode(20,"Ruan")
+        testTree .addNodeToBag(node2)
+        testTree .addEdge(node,node2)
+        self.assertEqual(node.hasEdgeTo(node2.getKey()),True)
+        self.assertEqual(node2.hasEdgeTo(node.getKey()),False)
+
+
+    def testExistsPathBetween(self):
+        keySet = [1,2,3,4,5,6,7,8,9,10]
+        valSet = ["a","b","c","d","e","f","g","h","i","j"]
+        tree = diGraph()
+
         
 
 

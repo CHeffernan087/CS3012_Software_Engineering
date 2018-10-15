@@ -11,10 +11,10 @@ class diGraphNode :
 		self.value = value
 
 	def pointToNewNode(self,newNode):
-		nodesPointedTo.append(pointToNewNode)
+		self.nodesPointedTo.append(newNode)
 
 	def traverseNodes(self):
-		for node in nodesPointedTo:
+		for node in self.nodesPointedTo:
 			print(node.getKey)
 
 	def getKey(self):
@@ -23,14 +23,25 @@ class diGraphNode :
 	def getVal(self):
 		return self.value
 
+	def setVal(self,val):
+		self.value = val
+
 	def printAdjacentNodes(self):
-		for node in nodesPointedTo:
+		for node in self.nodesPointedTo:
 			print node.getKey
 	
 	def existsPathTo(self,key):
 		if(self.getKey==key):
 			return True
-		for node in nodesPointedTo:
+		for node in self.nodesPointedTo:
 			if(node.existsPathTo(key)==True):
 				return True
 		return False
+	
+	def hasEdgeTo(self, key):
+		for node in self.nodesPointedTo:
+			if(node.getKey()==key):
+				return True;
+		return False
+
+	
