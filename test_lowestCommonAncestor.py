@@ -1,7 +1,8 @@
 from BST import BST
 from Node import Node
-from diGraphNode import diGraphNode
 from diGraph import diGraph
+from diGraphNode import diGraphNode
+
 import unittest
 
 class TestStringMethods(unittest.TestCase):
@@ -148,7 +149,7 @@ class TestStringMethods(unittest.TestCase):
 
     def testGetPathToVertex(self):
         #test linear tree
-        tree = BST();
+        tree = BST()
         keys = [1,2,3,4,5,6,7,8]
         vals = ['a','b','c','d','e','f','g','h']
         tree.makeBST(keys,vals)
@@ -257,9 +258,7 @@ class TestStringMethods(unittest.TestCase):
         keySet = [1,2,3,4,5,6,7,8,9,10]
         valSet = ["a","b","c","d","e","f","g","h","i","j"]
         tree = diGraph()
-        print("Set Of Nodes In Order  :\n")
         tree.addMultipleNodes(keySet,valSet)
-        print(tree.nodesToString())
         edgeSet= [[1,5],[1,6],[1,2],[2,10],[3,2],[3,10],[3,9],[3,4],[3,7],[4,7],[5,3],[5,6],[7,8]]
         tree.addMultipleEdges(edgeSet)
         self.assertEqual(tree.existsPathFromTo(1,5),True)
@@ -271,7 +270,21 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(tree.existsPathFromTo(11,2),False)
         self.assertEqual(tree.existsPathFromTo(4,8),True)
 
-        
+    def testAddAsyclicEdge(self):
+        keySet = [1,2,3,4,5,6,7,8,9,10]
+        valSet = ["a","b","c","d","e","f","g","h","i","j"]
+        tree = diGraph()
+        tree.addMultipleNodes(keySet,valSet)
+        edgeSet= [[1,5],[1,6],[1,2],[2,10],[3,2],[3,10],[3,9],[3,4],[3,7],[4,7],[5,3],[5,6],[7,8]]
+        tree.addMultipleEdges(edgeSet)
+        tree.asyclicInsertEdge(6,7)
+        self.assertTrue(tree.existsPathFromTo(6,7))
+        tree.asyclicInsertEdge(10,3)
+        self.assertTrue(tree.existsPathFromTo(3,10))
+        self.assertFalse(tree.existsPathFromTo(10,3))
+        self.assertTrue(tree.asyclicInsertEdge(4,1)==-1)
+        tree.asyclicInsertEdge(4,6)
+        self.assertTrue(tree.existsPathFromTo(3,6))
 
 
 

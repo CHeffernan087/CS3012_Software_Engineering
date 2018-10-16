@@ -51,7 +51,7 @@ class diGraph:
     def addEdgeByKey(self, k1,k2):
         node1 = self.getNodeByKey(k1)
         node2 = self.getNodeByKey(k2)
-        if(node1!=None and node2!= None):
+        if(node1!=None and node2!= None and k1!=k2):
             self.addEdge(node1,node2)
 
     def existsPathFromTo(self,fromKey,toKey):
@@ -59,4 +59,9 @@ class diGraph:
         if(node1==None):
             return False
         return node1.existsPathTo(toKey)
-    
+
+    def asyclicInsertEdge(self,k1,k2):
+        if(self.existsPathFromTo(k2,k1)==False ):
+            self.addEdgeByKey(k1,k2)
+            return
+        return -1    

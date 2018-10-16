@@ -44,6 +44,9 @@ class diGraphNode :
 			if(node.getKey()==key):
 				return True
 		return False
+
+
+
 	
 	
 
