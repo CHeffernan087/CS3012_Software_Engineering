@@ -91,7 +91,7 @@ class BST:
 	def getPathToNode(self, key):
 		array = []
 		if(self.get(key)==None):
-			return None;
+			return None
 		else:
 			self.recursiveGetPath(self.root,key,array)
 			return array
@@ -140,7 +140,7 @@ class BST:
 			i = i+1
 			n = allPaths[0][i]
 			
-		return n;
+		return n
 
 
 

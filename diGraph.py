@@ -64,4 +64,14 @@ class diGraph:
         if(self.existsPathFromTo(k2,k1)==False ):
             self.addEdgeByKey(k1,k2)
             return
-        return -1    
+        return -1  
+
+    def lowestCommonAncestor(self, root,k1,k2):
+        if(self.existsPathFromTo(root,k1)==False or self.existsPathFromTo(root,k2)==False):
+            return root
+        else:
+            for node in root.bag :
+                if (self.existsPathFromTo(node,k1)==True or self.existsPathFromTo(node,k2)==True):
+                    return self.lowestCommonAncestor(node,k1,k2)
+                
+            return root
