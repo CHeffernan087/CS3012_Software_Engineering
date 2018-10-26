@@ -291,8 +291,9 @@ class TestStringMethods(unittest.TestCase):
         valSet = ["a","b","c","d","e","f","g","h","i","j"]
         tree = diGraph()
         tree.addMultipleNodes(keySet,valSet)  
-        edgeSet= [[1,5],[1,6],[1,2],[2,10],[3,2],[3,10],[3,9],[3,4],[3,7],[4,7],[5,3],[5,6],[7,8]]
-        self.assertEqual(tree.lowestCommonAncestor(1,2,6),1)
+        edgeSet= [[1,5],[1,6],[1,2],[2,10],[3,2],[3,1],[3,10],[3,9],[3,4],[3,7],[4,7],[5,6],[7,8]]
+        tree.addMultipleEdges(edgeSet)
+        self.assertEqual(tree.lowestCommonAncestor(3,5,6),1)
 
 if __name__ == '__main__':
     unittest.main()

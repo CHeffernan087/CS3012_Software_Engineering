@@ -66,12 +66,14 @@ class diGraph:
             return
         return -1  
 
+    def lowestCommonAncestorRecursive(self,node,k1,k2):
+        for currentNode in node.nodesPointedTo:
+            if(currentNode.getKey()!=k1 and currentNode.getKey()!=k2 and self.existsPathFromTo(currentNode.getKey(),k1) and self.existsPathFromTo(currentNode.getKey(),k2)):
+                return self.lowestCommonAncestorRecursive(currentNode,k1,k2)
+        return node
+
     def lowestCommonAncestor(self, root,k1,k2):
-        if(self.existsPathFromTo(root,k1)==False or self.existsPathFromTo(root,k2)==False):
-            return root
-        else:
-            for node in root.bag :
-                if (self.existsPathFromTo(node,k1)==True or self.existsPathFromTo(node,k2)==True):
-                    return self.lowestCommonAncestor(node,k1,k2)
-                
-            return root
+        rootNode = self.getNodeByKey(root)
+        return self.lowestCommonAncestorRecursive(rootNode,k1,k2).getKey()
+        
+    

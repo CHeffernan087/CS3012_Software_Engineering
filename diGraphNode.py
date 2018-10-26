@@ -29,7 +29,7 @@ class diGraphNode :
 
 	def printAdjacentNodes(self):
 		for node in self.nodesPointedTo:
-			print node.getKey
+			print node.getKey()
 	
 	def existsPathTo(self,key):
 		if(self.getKey()==key):
