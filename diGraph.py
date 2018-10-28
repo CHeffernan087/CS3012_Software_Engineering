@@ -3,9 +3,13 @@ from diGraphNode import diGraphNode
 class diGraph:
    
     bag = []
+    root = None
 
     def __init__(self, bag = None):
-		self.bag = []
+        self.root = None
+        self.bag = []
+
+        
 
     def nodesToString(self):
         strForm = ""
@@ -15,6 +19,8 @@ class diGraph:
         return strForm
 
     def addNodeToBag(self,newNode) :
+        if (len(self.bag)==0):
+            self.root = newNode
         for node in self.bag:
             if node.getKey() == newNode.getKey():
                 node.setVal(newNode.getVal())
@@ -61,9 +67,10 @@ class diGraph:
         return node1.existsPathTo(toKey)
 
     def asyclicInsertEdge(self,k1,k2):
-        if(self.existsPathFromTo(k2,k1)==False ):
-            self.addEdgeByKey(k1,k2)
-            return
+        if(k1==self.root.getKey() or self.existsPathFromTo(self.root.getKey(),k2)):
+            if(self.existsPathFromTo(k2,k1)==False ):
+                self.addEdgeByKey(k1,k2)
+                return
         return -1  
 
     def lowestCommonAncestorRecursive(self,node,k1,k2):
@@ -72,8 +79,11 @@ class diGraph:
                 return self.lowestCommonAncestorRecursive(currentNode,k1,k2)
         return node
 
-    def lowestCommonAncestor(self, root,k1,k2):
-        rootNode = self.getNodeByKey(root)
-        return self.lowestCommonAncestorRecursive(rootNode,k1,k2).getKey()
+    def lowestCommonAncestor(self,k1,k2):
+        rootNode = self.getRoot()
+        if(self.existsPathFromTo(rootNode.getKey(),k1) and self.existsPathFromTo(rootNode.getKey(),k2)):
+            return self.lowestCommonAncestorRecursive(rootNode,k1,k2).getKey()
+        return None
         
-    
+    def getRoot(self):
+        return self.root

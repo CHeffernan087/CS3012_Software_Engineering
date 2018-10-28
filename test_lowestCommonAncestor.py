@@ -255,47 +255,50 @@ class TestStringMethods(unittest.TestCase):
 
 
     def testExistsPathBetween(self):
-        keySet = [1,2,3,4,5,6,7,8,9,10]
+        keySet = [3,2,1,4,5,6,7,8,9,10]
         valSet = ["a","b","c","d","e","f","g","h","i","j"]
         tree = diGraph()
         tree.addMultipleNodes(keySet,valSet)
-        edgeSet= [[1,5],[1,6],[1,2],[2,10],[3,2],[3,10],[3,9],[3,4],[3,7],[4,7],[5,3],[5,6],[7,8]]
+        edgeSet= [[3,1],[1,5],[1,6],[1,2],[2,10],[3,2],[3,10],[3,9],[3,4],[3,7],[4,7],[4,8],[5,6],[7,8]]
         tree.addMultipleEdges(edgeSet)
         self.assertEqual(tree.existsPathFromTo(1,5),True)
         self.assertEqual(tree.existsPathFromTo(1,10),True)
-        self.assertEqual(tree.existsPathFromTo(1,9),True)
-        self.assertEqual(tree.existsPathFromTo(1,9),True)
+        self.assertEqual(tree.existsPathFromTo(1,9),False)
         self.assertEqual(tree.existsPathFromTo(2,3),False)
         self.assertEqual(tree.existsPathFromTo(2,11),False)
         self.assertEqual(tree.existsPathFromTo(11,2),False)
         self.assertEqual(tree.existsPathFromTo(4,8),True)
 
     def testAddAsyclicEdge(self):
-        keySet = [1,2,3,4,5,6,7,8,9,10]
+        #root node = 3
+        keySet = [3,2,1,4,5,6,7,8,9,10]
         valSet = ["a","b","c","d","e","f","g","h","i","j"]
         tree = diGraph()
         tree.addMultipleNodes(keySet,valSet)
-        edgeSet= [[1,5],[1,6],[1,2],[2,10],[3,2],[3,10],[3,9],[3,4],[3,7],[4,7],[5,3],[5,6],[7,8]]
+        edgeSet= [[3,1],[1,5],[1,6],[1,2],[2,10],[3,2],[3,10],[3,9],[3,4],[3,7],[4,7],[5,6],[7,8]]
         tree.addMultipleEdges(edgeSet)
         tree.asyclicInsertEdge(6,7)
         self.assertTrue(tree.existsPathFromTo(6,7))
+        #this edge will not be inserted into the graph as it would cause a cycle
         tree.asyclicInsertEdge(10,3)
         self.assertTrue(tree.existsPathFromTo(3,10))
         self.assertFalse(tree.existsPathFromTo(10,3))
-        self.assertTrue(tree.asyclicInsertEdge(4,1)==-1)
+        self.assertTrue(tree.asyclicInsertEdge(8,4)==-1)
         tree.asyclicInsertEdge(4,6)
         self.assertTrue(tree.existsPathFromTo(3,6))
 
     def testLCA(self):
-        keySet = [1,2,3,4,5,6,7,8,9,10]
+        keySet = [3,1,2,4,5,6,7,8,9,10]
         valSet = ["a","b","c","d","e","f","g","h","i","j"]
         tree = diGraph()
         tree.addMultipleNodes(keySet,valSet)  
-        edgeSet= [[1,5],[1,6],[1,2],[2,10],[3,2],[3,1],[3,10],[3,9],[3,4],[3,7],[4,7],[5,6],[7,8]]
+        edgeSet= [[3,1],[1,5],[1,6],[1,2],[2,10],[3,2],[3,10],[3,9],[3,4],[3,7],[4,7],[5,6],[7,8]]
         tree.addMultipleEdges(edgeSet)
-        self.assertEqual(tree.lowestCommonAncestor(3,5,6),1)
-        self.assertEqual(tree.lowestCommonAncestor(3,1,10),3)
-        self.assertEqual(tree.lowestCommonAncestor(3,4,7),3)
+        self.assertEqual(tree.lowestCommonAncestor(5,6),1)
+        self.assertEqual(tree.lowestCommonAncestor(1,10),3)
+        self.assertEqual(tree.lowestCommonAncestor(4,7),3)
+        self.assertEqual(tree.lowestCommonAncestor(11,7),None)
+        self.assertEqual(tree.lowestCommonAncestor(None,None),None)
 
 if __name__ == '__main__':
     unittest.main()
